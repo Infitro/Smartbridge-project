@@ -1,38 +1,78 @@
-.App {
-  text-align: center;
+/* Global Page Styling */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f6f9;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Main Container */
+.dashboard-container {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Card Styling */
+.card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  margin-bottom: 25px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Header */
+.dashboard-title {
+  margin: 0 0 15px 0;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* User Info */
+.profile-info p {
+  margin: 5px 0;
+  color: #555;
+}
+
+/* Button Group */
+.button-group {
+  margin-top: 15px;
+}
+
+.button-group button {
+  margin-right: 10px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease-in-out;
+}
+
+/* Individual Button Colors */
+.chat-btn {
+  background-color: #4e73df;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.import-btn {
+  background-color: #1cc88a;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logout-btn {
+  background-color: #e74a3b;
+  color: white;
+}
+
+.button-group button:hover {
+  opacity: 0.85;
+}
+
+/* Divider */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 25px 0;
 }
