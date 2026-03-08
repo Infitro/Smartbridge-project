@@ -23,7 +23,7 @@ project-root/
 ├── frontend-app/   # React + TypeScript frontend (UI & client logic)
 ├── documentation/  # All mentor-required documents & templates
 └── README.md
-
+```
 - backend/ – Complete backend service: FastAPI app, routers for auth/papers/chat, data models, configuration, and LLM integration.
 - frontend-app/ – React single‑page application: pages (Dashboard, Search, Upload PDF, Doc Space, AI Tools), components, routing, and API client.
 - documentation/ – All project documentation requested by mentors (problem statements, brainstorming, empathy maps, architecture, planning, testing, UAT, etc.).
