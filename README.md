@@ -17,6 +17,7 @@ Demo video: (https://drive.google.com/file/d/1VQYivKoxEEcKyGoNQGZzbnWo8lAxclaB/v
 
 ## 2. Project Structure
 
+```text
 project-root/
 ├── backend/        # FastAPI backend (APIs, auth, AI orchestration)
 ├── frontend-app/   # React + TypeScript frontend (UI & client logic)
