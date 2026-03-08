@@ -1,0 +1,67 @@
+.rh-login-root {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1d283a 0, #020617 55%, #020617 100%);
+  color: #e5e7eb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+.rh-login-panel {
+  padding: 40px 32px;
+  box-sizing: border-box;
+  background: rgba(2, 6, 23, 0.96);
+  border-right: 1px solid #111827;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rh-login-header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.rh-login-header p {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-bottom: 24px;
+}
+
+.rh-login-hero {
+  position: relative;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, #4f46e5 0, #020617 55%, #020617 100%);
+}
+
+.rh-login-hero-content {
+  max-width: 420px;
+}
+
+.rh-login-hero-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.rh-login-hero-content p {
+  font-size: 0.95rem;
+  color: #e5e7eb;
+  opacity: 0.86;
+}
+
+/* Simple responsiveness */
+@media (max-width: 768px) {
+  .rh-login-root {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rh-login-hero {
+    display: none;
+  }
+}

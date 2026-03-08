@@ -1,0 +1,163 @@
+:root {
+  --rh-bg: #020617; /* slate-950 */
+  --rh-bg-card: #0b1120; /* dark card */
+  --rh-border-subtle: #1e293b;
+  --rh-primary: #4f46e5; /* indigo-600 */
+  --rh-primary-dark: #4338ca;
+  --rh-text: #e5e7eb;
+  --rh-text-muted: #9ca3af;
+  --rh-accent-green: #22c55e;
+}
+
+.rh-root {
+  display: flex;
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #1d283a 0, #020617 45%, #020617 100%);
+  color: var(--rh-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+}
+
+/* SIDEBAR */
+
+.rh-sidebar {
+  width: 240px;
+  background: linear-gradient(to bottom, #020617, #020617, #0b1120);
+  border-right: 1px solid var(--rh-border-subtle);
+  padding: 24px 16px;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.rh-logo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+  color: var(--rh-text);
+}
+
+.rh-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rh-nav-item {
+  display: block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--rh-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.rh-nav-item:hover {
+  background: rgba(79, 70, 229, 0.16);
+  color: var(--rh-text);
+}
+
+.rh-nav-item-active {
+  background: var(--rh-primary);
+  color: white;
+}
+
+/* MAIN AREA */
+
+.rh-main {
+  margin-left: 240px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.rh-topbar {
+  height: 56px;
+  border-bottom: 1px solid var(--rh-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-sizing: border-box;
+  backdrop-filter: blur(10px);
+  background: rgba(2, 6, 23, 0.85);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.rh-user-pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--rh-border-subtle);
+  font-size: 0.85rem;
+  color: var(--rh-text-muted);
+}
+
+.rh-content {
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+/* Generic card styles for dashboard pages */
+
+.rh-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.rh-card {
+  background: var(--rh-bg-card);
+  border-radius: 14px;
+  border: 1px solid var(--rh-border-subtle);
+  padding: 16px 18px;
+  box-sizing: border-box;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.75);
+}
+
+.rh-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.rh-card-subtitle {
+  font-size: 0.8rem;
+  color: var(--rh-text-muted);
+  margin-bottom: 12px;
+}
+
+/* Simple primary button */
+
+.rh-button-primary {
+  background: var(--rh-primary);
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.rh-button-primary:hover {
+  background: var(--rh-primary-dark);
+  transform: translateY(-1px);
+}
+
+.rh-section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.rh-section-subtitle {
+  font-size: 0.9rem;
+  color: var(--rh-text-muted);
+  margin-bottom: 20px;
+}

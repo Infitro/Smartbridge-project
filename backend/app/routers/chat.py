@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
+from typing import List
 
 from app.models.user import User
 from app.models.chat import ChatMessage
@@ -19,26 +20,41 @@ async def get_workspace_papers(workspace_id: int, owner_id: int) -> list[Paper]:
     ]
 
 
-def create_research_context(papers: list[Paper], user_query: str) -> str:
-    # Simple context: concatenated titles & abstracts
-    snippets = []
+def create_research_context(papers: List[Paper], user_query: str) -> str:
+    """
+    Aggregate paper information (titles, authors, abstracts) into a structured
+    context string that will be sent to the LLM.
+    """
+    snippets: List[str] = []
     for p in papers:
-        snippets.append(f"Title: {p.title}\nAbstract: {p.abstract}")
-    context = "\n\n".join(snippets)
-    return context or "No papers available in this workspace."
+        snippet = (
+            f"Title: {p.title}\n"
+            f"Authors: {', '.join(p.authors) if isinstance(p.authors, list) else p.authors}\n"
+            f"Abstract: {p.abstract}"
+        )
+        snippets.append(snippet)
+
+    papers_context = "\n\n---\n\n".join(snippets) if snippets else "No papers available in this workspace."
+    return f"Research Papers Context:\n{papers_context}\n\nUser Query: {user_query}"
 
 
 async def store_conversation(workspace_id: int, user_msg: str, ai_msg: str) -> None:
     # TODO: Persist conversation to DB; for now, this is a no-op
-    pass
+    return None
 
 
-@router.post("/chat")
+@router.post("/workspace")
 async def chat_with_papers(
     message: ChatMessage,
     workspace_id: int,
     current_user: User = Depends(get_current_user),
 ):
+    """
+    Multi-turn research chat using papers from a given workspace as context.
+    """
+    if not message.content:
+        raise HTTPException(status_code=400, detail="Message content is required")
+
     workspace_papers = await get_workspace_papers(workspace_id, current_user.id)
     context = create_research_context(workspace_papers, message.content)
 
@@ -46,9 +62,12 @@ async def chat_with_papers(
         messages=[
             {
                 "role": "system",
-                "content": f"You are a research assistant. Context: {context}",
+                "content": "You are an expert research assistant.",
             },
-            {"role": "user", "content": message.content},
+            {
+                "role": "user",
+                "content": f"Context: {context}\n\nQuestion: {message.content}",
+            },
         ],
         **MODEL_CONFIG,
     )
